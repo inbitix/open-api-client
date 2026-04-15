@@ -32,7 +32,7 @@ public class BrokerConstants {
     public static final String PONG_MSG_KEY = "pong";
 
     /**
-     * 心跳间隔 1分钟一次
+     * Heartbeat interval: once per minute
      */
     public static final long HEART_BEAT_INTERVAL = 60 * 1000;
 

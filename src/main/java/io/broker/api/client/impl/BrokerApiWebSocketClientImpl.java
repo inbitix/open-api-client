@@ -186,7 +186,7 @@ public class BrokerApiWebSocketClientImpl implements BrokerApiWebSocketClient, C
         final WebSocket webSocket = client.newWebSocket(request, listener);
         webSocket.send(channel);
         Closeable closeable = createCloseable(listener, webSocket);
-        // 添加监控线程
+        // Add monitoring thread
         if (retry) {
             executorService.execute(this.socketMonitor(webSocket, channel, listener, retry));
         }
@@ -200,7 +200,7 @@ public class BrokerApiWebSocketClientImpl implements BrokerApiWebSocketClient, C
         webSocket.send(channel);
         Closeable closeable = createCloseable(listener, webSocket);
         if (retry) {
-            // 添加监控线程
+            // Add monitoring thread
             executorService.execute(this.userSocketMonitor(channel, listenKey, listener));
         }
         return closeable;
@@ -231,7 +231,7 @@ public class BrokerApiWebSocketClientImpl implements BrokerApiWebSocketClient, C
                 while (true) {
                     try {
                         long time = System.currentTimeMillis();
-                        // 间隔大于1分钟，发送一次心跳
+                        // Send heartbeat if interval exceeds 1 minute
                         if ((time - lastTime) > BrokerConstants.HEART_BEAT_INTERVAL) {
                             ObjectMapper mapper = new ObjectMapper();
                             pingMap.put(BrokerConstants.PING_MSG_KEY, time);

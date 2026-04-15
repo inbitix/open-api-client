@@ -100,7 +100,7 @@ public class UserDataStreamTest {
     public void testTimestamp() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         long timeInMillis = timestamp.getTime();
-        System.out.println(timeInMillis);  // 输出当前时间的毫秒表示
+        System.out.println(timeInMillis);
     }
 
     @Test
