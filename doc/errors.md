@@ -1,4 +1,4 @@
-# Error codes for BlueHelix Broker (2026-04-15)
+# Error codes for Broker (2026-04-15)
 
 Errors consist of two parts: an error code and a message. Codes are universal,
  but messages can vary. Here is the error JSON payload:

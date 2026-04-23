@@ -1566,8 +1566,5 @@ The `MAX_ALGO_ORDERS` filter defines the maximum number of "algo" orders an acco
   }
 ```
 
-#### user transfer (TRANSFER)
 
-```shell
-POST /openapi/v1/user/transfer
 ```
