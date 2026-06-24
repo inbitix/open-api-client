@@ -66,6 +66,19 @@ public final class BrokerApiClientFactory {
         return new BrokerApiRestClientImpl(baseUrl, apiKey, secret);
     }
 
+    /**
+     * Creates a new synchronous/blocking Contract REST client.
+     */
+    public BrokerContractApiRestClient newContractRestClient() {
+        return new BrokerContractApiRestClientImpl(baseUrl, apiKey, secret);
+    }
+
+    /**
+     * Creates a new synchronous/blocking Contract REST client.
+     */
+    public TradeBrokerContractApiRestClientImpl newTradeContractRestClient() {
+        return new TradeBrokerContractApiRestClientImpl(baseUrl, apiKey, secret);
+    }
 
     /**
      * Creates a new synchronous/blocking websocket REST client.

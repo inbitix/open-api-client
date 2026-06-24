@@ -1299,46 +1299,6 @@ None
 ```
 
 
-#### Internal Account Transfer (ACCOUNT_TRANSFER)
-
-```shell
-POST /openapi/v1/transfer
-```
-
-Internal transfer
-
-**Weight:**
-1
-
-**Parameters:**
-
-Name | Typee | Mandatory | Description
------------- | ------------ | ------------ | ------------
-fromAccountType | int | YES |source account type: 1. token trading account 2.Options account 3. Contracts account
-fromAccountIndex | int | YES |sub-account index(valid when using main-account api, get sub-account indices from `SUB_ACCOUNT_LIST` endpoint)
-toAccountType | int | YES | Target account type: 1. token trading account 2.Options account 3. Contracts account
-toAccountIndex | int | YES | sub-account index(valid when using main-account api, get sub-account indices from `SUB_ACCOUNT_LIST` endpoint)
-tokenId | STRING | YES | tokenID
-amount | STRING | YES | Transfer amount
-
-**Response:**
-
-```javascript
-{
-    "success":"true" // success
-}
-```
-
-**Explanation**
-
-1. Either transferring or receiving account must be the main account (Token trading account)
-
-2. Main account api can support transferring to other account(including sub-accounts) and receiving from other accounts
-
-3. **Sub-account API only supports transferring from current account to the main-account. Therefore `fromAccountType\fromAccountIndex\toAccountType\toAccountIndex` should be left empty.**
-
-
-
 #### Check Balance Flow (BALANCE_FLOW)
 
 ```shell
