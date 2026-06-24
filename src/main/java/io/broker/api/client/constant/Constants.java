@@ -10,7 +10,7 @@ public class Constants {
     public final static String CONTRACT_SECRET_KEY = "SZcuVbQKgt9nfBC2aIsFJh0ILcSKz9fuNkZ4KWWP6PU5RYQgNYkLe6PSfgGlvQta";
 
     // server: https://openapi.inbitix.com/openapi
-    public static final String BASE_DOMAIN = "test-openapi.inbitix.com";
+    public static final String BASE_DOMAIN = "openapi.inbitix.com";
     public static final String QUOTE_DOMAIN = "ws.inbitix.com";
 
     // api url format: https://BASE_DOMAIN/openapi/
