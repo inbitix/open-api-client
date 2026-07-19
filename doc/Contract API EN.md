@@ -522,6 +522,36 @@ None
 
 ### **Response:**
 
+name|type|example|description
+------------ | ------------ | ------------ | ------------
+`symbol`|string|`BTC-PERP-REV`|Name of the contract.
+`symbolName`|string|`BTC-PERP-REV`|Display name of the contract.
+`baseToken`|string|`BTC-PERP-REV`|Base token of the contract.
+`quoteToken`|string|`TBTC`|Quote token of the contract.
+`lastPrice`|string|`11682.8`|Last trade price.
+`baseVolume`|string|`13621303`|Trading volume in base asset (contracts).
+`quoteVolume`|string|`1094.487444013737088362`|Trading volume in quote asset.
+`bid`|string|`11682`|Best bid price.
+`ask`|string|`11683.3`|Best ask price.
+`high`|string|`11730.1`|Highest price in the statistics window.
+`low`|string|`11567.1`|Lowest price in the statistics window.
+`productType`|string|`Perpetual`|Product type, e.g. `Perpetual`, `futures`.
+`openInterest`|string|`23797354`|Open interest (in contracts).
+`openInterestUsd`|string|`277955042.65`|Open interest denominated in USD.
+`indexPrice`|string|`11679.5433333333333333`|Index price of the underlying asset.
+`index`|string|`BTCUSDT`|Index symbol of the underlying asset.
+`indexBaseToken`|string|`USD`|Base token of the index.
+`startTs`|string|`1598789083`|Start timestamp of the statistics window (in seconds).
+`endTs`|string|`1598875483`|End timestamp of the statistics window (in seconds).
+`fundingRate`|string|`0.000038494841395324`|Current funding rate.
+`nextFundingRate`|string|`0.000088260431150408`|Estimated next funding rate.
+`nextFundingRateTs`|long|`1598904000`|Timestamp of the next funding rate settlement (in seconds).
+`takerFee`|string|`0.00060000`|Taker fee rate.
+`markerFee`|string|`0.00020000`|Maker fee rate.
+`markPrice`|string|`11680.5`|Mark price.
+
+### **Example:**
+
 ```javascript
 [
   {
@@ -538,6 +568,7 @@ None
     "low":"11567.1",
     "productType":"futures",
     "openInterest":"23797354",
+    "openInterestUsd":"277955042.65",
     "indexPrice":"11679.5433333333333333",
     "index":"BTCUSDT",
     "indexBaseToken":"USD",
@@ -545,7 +576,10 @@ None
     "endTs":"1598875483",
     "fundingRate":"0.000038494841395324",
     "nextFundingRate":"0.000088260431150408",
-    "nextFundingRateTs":1598904000
+    "nextFundingRateTs":1598904000,
+    "takerFee":"0.00060000",
+    "markerFee":"0.00020000",
+    "markPrice":"11680.5"
   },
   {
     "symbol":"BTC-SWAP",
@@ -561,6 +595,7 @@ None
     "low":"11567.4",
     "productType":"futures",
     "openInterest":"3289364",
+    "openInterestUsd":"38428921.5",
     "indexPrice":"11679.5433333333333333",
     "index":"BTCUSDT",
     "indexBaseToken":"USD",
@@ -568,7 +603,10 @@ None
     "endTs":"1598875492",
     "fundingRate":"0.000084351317877269",
     "nextFundingRate":"0.000084285978912247",
-    "nextFundingRateTs":1598904000
+    "nextFundingRateTs":1598904000,
+    "takerFee":"0.00060000",
+    "markerFee":"0.00020000",
+    "markPrice":"11680.1"
   }
 ]
 
