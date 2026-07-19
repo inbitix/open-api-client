@@ -1067,6 +1067,13 @@ Name|type|example|description
 `unrealizedPnL`|float|`0.0`|Unrealized profit and loss for current position held.
 `profitRate`|float|`0.0000333`|Rate of return for the position.
 `realizedPnL`|float|`6.8`|Cumulative realized profit and loss for this `symbol`.
+`markPrice`|string|`8572.53`|Mark price of the position.
+`indexPrice`|string|`8570.12`|Index price of the underlying asset.
+`liquidationPrice`|string|`7523.65`|Estimated liquidation price.
+`initialMargin`|string|`0.01251335`|Initial margin of the position.
+`maintenanceMargin`|string|`0.003`|Maintenance margin of the position.
+`marginMode`|string|`cross`|Margin mode. Possible values: `cross`, `isolated`.
+`updatedAt`|long|`1570760582848`|Position update time in milliseconds.
 
 
 ### **Example:**
@@ -1086,7 +1093,14 @@ Name|type|example|description
     'marginRate': '0.14',
     'unrealizedPnL': '0.00608975',
     'profitRate': '0.0000333',
-    'realizedPnL': '-0.00006721'
+    'realizedPnL': '-0.00006721',
+    'markPrice': '8572.53',
+    'indexPrice': '8570.12',
+    'liquidationPrice': '7523.65',
+    'initialMargin': '0.01251335',
+    'maintenanceMargin': '0.003',
+    'marginMode': 'cross',
+    'updatedAt': 1570760582848
   },...
 ]
 ```
@@ -1114,6 +1128,9 @@ Name|type|example|description
 `availableMargin`|float|`131.0545541`|Available margin for use.
 `positionMargin`|float|`0.01215991`|Margin for positions.
 `orderMargin`|float|`0`| Margin locked for open orders.
+`walletBalance`|string|`131.06671401`|Wallet balance.
+`equity`|string|`131.0545541`|Total equity.
+`updatedAt`|long|`1570760582848`|Account update time in milliseconds.
 
 ### **Example:**
 
@@ -1123,7 +1140,10 @@ Name|type|example|description
     "total":"131.06671401",
     "availableMargin":"131.0545541",
     "positionMargin":"0.01215991",
-    "orderMargin":"0"
+    "orderMargin":"0",
+    "walletBalance":"131.06671401",
+    "equity":"131.0545541",
+    "updatedAt":1570760582848
   },...
 }
 ```

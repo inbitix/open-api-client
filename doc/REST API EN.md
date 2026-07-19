@@ -1325,6 +1325,24 @@ Check blance flow
 
 **Response:**
 
+Name|Type|Example|Description
+------------ | ------------ | ------------ | ------------
+`id`|string|`539870570957903104`|Balance flow ID.
+`accountId`|string|`122216245228131`|Account ID.
+`tokenId`|string|`BTC`|Token ID.
+`tokenName`|string|`BTC`|Token name.
+`flowTypeValue`|int|`51`|Balance flow type ID. See flow type table below.
+`flowType`|string|`USER_ACCOUNT_TRANSFER`|Balance flow type name.
+`flowName`|string|`Transfer`|Balance flow type explanation.
+`change`|string|`-12.5`|Balance change amount.
+`total`|string|`379.624059937852365`|Total asset after change.
+`symbol`|string|`BTC-PERP-REV`|Contract symbol name. Only present for derivatives flow types (e.g. FUNDING_SETTLEMENT, PNL).
+`positionSide`|string|`LONG`|Position side. Possible values: `LONG`, `SHORT`. Only present for derivatives flow types.
+`fundingRate`|string|`0.0001`|Funding rate at settlement time. Only present for `FUNDING_SETTLEMENT` flow type.
+`fundingTime`|string|`1579093587214`|Funding settlement time in milliseconds. Only present for `FUNDING_SETTLEMENT` flow type.
+`positionIndex`|int|`1`|Position index. Only present for derivatives flow types.
+`created`|string|`1579093587214`|Timestamp when the flow record was created (milliseconds).
+
 ```javascript
 [
     {
@@ -1350,6 +1368,23 @@ Check blance flow
         "change": "-2000",
         "total": "918662.0917630848",
         "created": "1578640809195"
+    },
+    {
+        "id": "540000000000000001",
+        "accountId": "122216245228131",
+        "tokenId": "USDT",
+        "tokenName": "USDT",
+        "flowTypeValue": 32,
+        "flowType": "FUNDING_SETTLEMENT",
+        "flowName": "Funding Settlement",
+        "change": "-0.05",
+        "total": "918662.0417630848",
+        "symbol": "BTC-PERP-REV",
+        "positionSide": "LONG",
+        "fundingRate": "0.0001",
+        "fundingTime": "1579093587214",
+        "positionIndex": 1,
+        "created": "1579093587214"
     }
 ]
 ```

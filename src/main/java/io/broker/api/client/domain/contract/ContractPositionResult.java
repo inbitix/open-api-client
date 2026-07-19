@@ -76,4 +76,39 @@ public class ContractPositionResult {
      * Cumulative realized profit and loss for this symbol.
      */
     private String realizedPnL;
+
+    /**
+     * Mark price.
+     */
+    private String markPrice;
+
+    /**
+     * Index price.
+     */
+    private String indexPrice;
+
+    /**
+     * Estimated liquidation price.
+     */
+    private String liquidationPrice;
+
+    /**
+     * Margin mode: cross / isolated.
+     */
+    private String marginMode;
+
+    /**
+     * Position update time in milliseconds.
+     */
+    private Long updatedAt;
+
+    /**
+     * Position initial margin.
+     */
+    private String initialMargin;
+
+    /**
+     * Maintenance margin.
+     */
+    private String maintenanceMargin;
 }

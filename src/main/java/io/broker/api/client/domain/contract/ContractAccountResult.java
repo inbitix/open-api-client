@@ -32,4 +32,19 @@ public class ContractAccountResult {
      * Token id.
      */
     private String tokenId;
+
+    /**
+     * Wallet balance.
+     */
+    private String walletBalance;
+
+    /**
+     * Total equity.
+     */
+    private String equity;
+
+    /**
+     * Account update time in milliseconds.
+     */
+    private Long updatedAt;
 }
