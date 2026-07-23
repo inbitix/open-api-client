@@ -1059,9 +1059,8 @@ timestamp | LONG | YES |
 ```javascript
 {
   "canTrade": true,
-  "canWithdraw": true,
+  "canWithdraw": false,
   "canDeposit": true,
-  "updateTime": 123456789,
   "balances": [
     {
       "asset": "BTC",
