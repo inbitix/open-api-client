@@ -21,4 +21,6 @@ public class SocketUserResponse {
 
     private List<SocketAccount> accountList;
 
+    private List<SocketTicketInfo> ticketInfoList;
+
 }

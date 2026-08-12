@@ -167,3 +167,40 @@ Average price can be found by doing `Z` divided by `z`.
 * FILLED
 * CANCELED
 * REJECTED
+
+
+### Trade Update (ticketInfo)
+
+Trade fills are pushed with the `ticketInfo` event. Each trade generates **two** ticketInfo messages: one from the taker's perspective and one from the maker's perspective. Self-trades are **not** pushed.
+
+`ticketInfo` is a lightweight notification that does **not** involve database operations, so it typically arrives **before** `executionReport`.
+
+**Payload:**
+
+The payload is a JSON **array** of trade objects:
+
+```javascript
+[
+  {
+    "e": "ticketInfo",             // Event type
+    "E": 1499405658849,            // Event time
+    "s": "ETH-SWAP-USDT",          // Symbol
+    "q": "1.00000000",             // Trade quantity
+    "t": 1499405658657,            // Match time
+    "p": "1920.39",                // Trade price
+    "T": 2278691388218753025,      // Ticket ID (unique trade ID)
+    "o": 2278691316614380032,      // Order ID (taker)
+    "c": "amm-xxx",                // Client order ID (taker)
+    "O": 2278691387825273344,      // Match order ID (maker)
+    "a": 2253760758625152514,      // Account ID (taker)
+    "A": 2259488144750614018       // Match account ID (maker)
+  }
+]
+```
+
+**Notes:**
+
+* Each trade produces two `ticketInfo` messages: one for the taker's account and one for the maker's account.
+* `ticketInfo` only contains trade execution data. For order status changes (e.g., NEW, PARTIALLY_FILLED, FILLED, CANCELED), refer to the `executionReport` event.
+* The `p` field in `ticketInfo` is the **actual fill price**, whereas the `p` field in `executionReport` is the order's limit price.
+* Self-trades (taker account == maker account) are filtered out and will not be pushed.

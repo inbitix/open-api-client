@@ -8,6 +8,7 @@ import io.broker.api.client.BrokerApiCallback;
 import io.broker.api.client.constant.BrokerConstants;
 import io.broker.api.client.domain.account.SocketAccount;
 import io.broker.api.client.domain.account.SocketOrder;
+import io.broker.api.client.domain.account.SocketTicketInfo;
 import io.broker.api.client.domain.account.SocketUserResponse;
 import io.broker.api.client.domain.channel.EventType;
 import io.broker.api.client.exception.BrokerApiException;
@@ -55,6 +56,7 @@ public class BrokerApiWebSocketUserListener<T> extends WebSocketListener {
             Long pingTime = 0L;
             List<SocketOrder> orderList = Lists.newArrayList();
             List<SocketAccount> accountList = Lists.newArrayList();
+            List<SocketTicketInfo> ticketInfoList = Lists.newArrayList();
             if (jsonNode.isArray()) {
                 for (int i = 0; i < jsonNode.size(); i++) {
 
@@ -73,6 +75,9 @@ public class BrokerApiWebSocketUserListener<T> extends WebSocketListener {
                             || eventType.equals(EventType.MARGIN_EXECUTION_REPORT.getType())) {
                         SocketOrder order = mapper.readValue(node.toString(), SocketOrder.class);
                         orderList.add(order);
+                    } else if (eventType.equals(EventType.TICKET_INFO.getType())) {
+                        SocketTicketInfo ticketInfo = mapper.readValue(node.toString(), SocketTicketInfo.class);
+                        ticketInfoList.add(ticketInfo);
                     }
                 }
             } else {
@@ -90,6 +95,7 @@ public class BrokerApiWebSocketUserListener<T> extends WebSocketListener {
                     .pingTime(pingTime)
                     .orderList(orderList)
                     .accountList(accountList)
+                    .ticketInfoList(ticketInfoList)
                     .build();
 
             callback.onResponse((T) event);
