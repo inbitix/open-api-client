@@ -84,7 +84,9 @@ Optional auto-reconnect is available via `autoRetry`, with built-in heartbeat ha
 import io.broker.api.client.BrokerApiClientFactory;
 import io.broker.api.client.BrokerApiRestClient;
 
+// Production environment
 String baseUrl = "https://openapi.inbitix.com/openapi";
+// Test environment: "https://test-openapi.inbitix.com/openapi"
 String apiKey = "your_api_key";
 String secret = "your_secret";
 
@@ -120,8 +122,12 @@ System.out.println(resp);
 ```java
 import io.broker.api.client.BrokerApiWebSocketClient;
 
+// Production environment
 String wsQuoteUrl = "wss://ws.inbitix.com/ws/quote/v1";
 String wsUserUrl = "wss://openapi.inbitix.com/openapi/ws/";
+// Test environment:
+// String wsQuoteUrl = "wss://test-ws.inbitix.com/ws/quote/v1";
+// String wsUserUrl = "wss://test-openapi.inbitix.com/openapi/ws/";
 
 BrokerApiWebSocketClient wsClient = factory.newWebSocketClient(wsQuoteUrl, wsUserUrl);
 
