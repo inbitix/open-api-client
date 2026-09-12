@@ -136,6 +136,26 @@ public class BrokerContractApiRestClientImpl implements BrokerContractApiRestCli
     }
 
     @Override
+    public PositionModeResult getPositionMode(String symbol) {
+        return executeSync(brokerContractApiService.getPositionMode(symbol));
+    }
+
+    @Override
+    public PositionModeResult setPositionMode(String symbol, Boolean isCross) {
+        return executeSync(brokerContractApiService.setPositionMode(symbol, isCross));
+    }
+
+    @Override
+    public UpdateLeverageMergeResult updateLeverageMerge(String symbol, Integer leverage, Integer isLong) {
+        return executeSync(brokerContractApiService.updateLeverageMerge(symbol, leverage, isLong));
+    }
+
+    @Override
+    public LeverageMergeResult queryLeverageMerge(String symbol) {
+        return executeSync(brokerContractApiService.queryLeverageMerge(symbol));
+    }
+
+    @Override
     public Map<String, ContractAccountResult> getContractAccount() {
         return executeSync(brokerContractApiService.getContractAccount());
     }

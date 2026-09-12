@@ -134,6 +134,41 @@ public interface BrokerContractApiRestClient {
     ModifyMarginResult modifyMargin(ModifyMarginRequest request);
 
     /**
+     * Update user leverage for a contract symbol (merge version).
+     *
+     * @param symbol   ticker symbol (e.g. ETH-SWAP-USDT)
+     * @param leverage leverage value to set
+     * @param isLong   0 for cross margin mode, 1 for long, 2 for short
+     * @return update result
+     */
+    /**
+     * Query position mode (cross/isolated) for a contract symbol.
+     *
+     * @param symbol ticker symbol (e.g. BTC-SWAP-USDT)
+     * @return position mode result containing isCross
+     */
+    PositionModeResult getPositionMode(String symbol);
+
+    /**
+     * Set position mode (cross/isolated) for a contract symbol.
+     *
+     * @param symbol  ticker symbol (e.g. BTC-SWAP-USDT)
+     * @param isCross true for cross margin, false for isolated margin
+     * @return result containing success flag
+     */
+    PositionModeResult setPositionMode(String symbol, Boolean isCross);
+
+    UpdateLeverageMergeResult updateLeverageMerge(String symbol, Integer leverage, Integer isLong);
+
+    /**
+     * Query user leverage for a contract symbol (merge version).
+     *
+     * @param symbol ticker symbol (e.g. ETH-SWAP-USDT)
+     * @return leverage details including leverage, leverageLong, leverageShort, isCross
+     */
+    LeverageMergeResult queryLeverageMerge(String symbol);
+
+    /**
      * Get funding rates for a symbol.
      *
      * @param symbol ticker symbol (e.g. ETH-SWAP-USDT)

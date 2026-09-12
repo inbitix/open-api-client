@@ -89,6 +89,25 @@ public interface BrokerContractApiService {
                                           @Query("amount") String amount);
 
     @Headers(BrokerConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET(SERVER_URL_PREFIX + "/contract/v1/getPositionMode")
+    Call<PositionModeResult> getPositionMode(@Query("symbol") String symbol);
+
+    @Headers(BrokerConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @POST(SERVER_URL_PREFIX + "/contract/v1/setPositionMode")
+    Call<PositionModeResult> setPositionMode(@Query("symbol") String symbol,
+                                             @Query("isCross") Boolean isCross);
+
+    @Headers(BrokerConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @POST(SERVER_URL_PREFIX + "/contract/v1/updateLeverageMerge")
+    Call<UpdateLeverageMergeResult> updateLeverageMerge(@Query("symbol") String symbol,
+                                                        @Query("leverage") Integer leverage,
+                                                        @Query("isLong") Integer isLong);
+
+    @Headers(BrokerConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET(SERVER_URL_PREFIX + "/contract/v1/queryLeverageMerge")
+    Call<LeverageMergeResult> queryLeverageMerge(@Query("symbol") String symbol);
+
+    @Headers(BrokerConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET(SERVER_URL_PREFIX + "/contract/v1/account")
     Call<Map<String, ContractAccountResult>> getContractAccount();
 

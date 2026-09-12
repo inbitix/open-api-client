@@ -333,6 +333,47 @@ public class ContractRestApiTest {
         }
     }
 
+    private static final String BTC_SWAP_USDT = "BTC-SWAP-USDT";
+
+    @Test
+    public void testPositionModeAndLeverage() {
+        BrokerContractApiRestClient client = getContractRestClient();
+        String symbolId = BTC_SWAP_USDT;
+
+        System.out.println("====== 1. Set cross margin mode ======");
+        PositionModeResult setCrossResult = client.setPositionMode(symbolId, true);
+        System.out.println("setPositionMode(cross) success: " + setCrossResult.getSuccess());
+
+        System.out.println("\n====== 2. Get position mode ======");
+        PositionModeResult modeResult = client.getPositionMode(symbolId);
+        System.out.println("isCross: " + modeResult.getIsCross() + ", switchFlag: " + modeResult.getSwitchFlag());
+
+        System.out.println("\n====== 3. Set cross leverage = 15 ======");
+        UpdateLeverageMergeResult crossLeverageResult = client.updateLeverageMerge(symbolId, 15, 0);
+        System.out.println("updateLeverageMerge(cross, 15) success: " + crossLeverageResult.getSuccess());
+
+        System.out.println("\n====== 4. Query leverage (cross) ======");
+        LeverageMergeResult crossQueryResult = client.queryLeverageMerge(symbolId);
+        System.out.println(JSON.toJSONString(crossQueryResult, true));
+
+        System.out.println("\n====== 5. Set isolated margin mode ======");
+        PositionModeResult setIsolatedResult = client.setPositionMode(symbolId, false);
+        System.out.println("setPositionMode(isolated) success: " + setIsolatedResult.getSuccess());
+
+        System.out.println("\n====== 6. Set isolated long leverage = 6 ======");
+        UpdateLeverageMergeResult longLeverageResult = client.updateLeverageMerge(symbolId, 6, 1);
+        System.out.println("updateLeverageMerge(long, 6) success: " + longLeverageResult.getSuccess());
+
+        System.out.println("\n====== 7. Set isolated short leverage = 7 ======");
+        UpdateLeverageMergeResult shortLeverageResult = client.updateLeverageMerge(symbolId, 7, 2);
+        System.out.println("updateLeverageMerge(short, 7) success: " + shortLeverageResult.getSuccess());
+
+        System.out.println("\n====== 8. Query leverage (isolated) ======");
+        LeverageMergeResult isolatedQueryResult = client.queryLeverageMerge(symbolId);
+        System.out.println("leverageLong: " + isolatedQueryResult.getLeverageLong() + ", leverageShort: " + isolatedQueryResult.getLeverageShort());
+        System.out.println(JSON.toJSONString(isolatedQueryResult, true));
+    }
+
     public static void main(String[] args) {
         long start = new Date().getTime();
         BrokerContractApiRestClient client = getContractRestClientStatic();

@@ -1404,6 +1404,147 @@ Name|type|example|description
 }
 ```
 
+## `getPositionMode`
+
+Retrieve the current position mode for all symbols of the account. This API endpoint requires your request to be signed.
+
+### **Request Weight:**
+
+1
+
+### **Request Url:**
+```bash
+GET /openapi/contract/v1/getPositionMode
+```
+
+### **Parameters:**
+Parameter|type|required|default|description
+------------ | ------------ | ------------ | ------------ | -------
+`symbol`|string|`YES`||Name of the contract.
+
+### **Response:**
+Name|type|example|description
+------------ | ------------ | ------------ | ------------
+`isCross`|boolean|`true`|Whether the position is in cross margin mode.
+`switchFlag`|boolean|`false`|Whether the position mode switch is in progress.
+`symbol_id`|string|`BTC-PERP-REV`|Name of the contract.
+
+### **Example:**
+
+```js
+{
+  'isCross': true,
+  'switchFlag': false,
+  'symbol_id': 'BTC-PERP-REV'
+}
+```
+
+## `setPositionMode`
+
+Set the position mode (cross/isolated) for all symbols of the account. This API endpoint requires your request to be signed.
+
+### **Request Weight:**
+
+1
+
+### **Request Url:**
+```bash
+POST /openapi/contract/v1/setPositionMode
+```
+
+### **Parameters:**
+Parameter|type|required|default|description
+------------ | ------------ | ------------ | ------------ | -------
+`symbol`|string|`YES`||Name of the contract.
+`isCross`|boolean|`YES`||Whether to use cross margin mode. `true` for cross, `false` for isolated.
+
+### **Response:**
+Name|type|example|description
+------------ | ------------ | ------------ | ------------
+`success`|boolean|`true`|Whether the operation was successful.
+
+### **Example:**
+
+```js
+{
+  'success': true
+}
+```
+
+## `updateLeverageMerge`
+
+Update the leverage for all position sides of the account. This API endpoint requires your request to be signed.
+
+### **Request Weight:**
+
+1
+
+### **Request Url:**
+```bash
+POST /openapi/contract/v1/updateLeverageMerge
+```
+
+### **Parameters:**
+Parameter|type|required|default|description
+------------ | ------------ | ------------ | ------------ | -------
+`symbol`|string|`YES`||Name of the contract.
+`leverage`|string|`YES`||Leverage value to set.
+`isLong`|integer|`YES`||Position side. `1` for long, `0` for short.
+
+### **Response:**
+Name|type|example|description
+------------ | ------------ | ------------ | ------------
+`success`|boolean|`true`|Whether the operation was successful.
+
+### **Example:**
+
+```js
+{
+  'success': true
+}
+```
+
+## `queryLeverageMerge`
+
+Query the current leverage settings for all symbols of the account. This API endpoint requires your request to be signed.
+
+### **Request Weight:**
+
+1
+
+### **Request Url:**
+```bash
+GET /openapi/contract/v1/queryLeverageMerge
+```
+
+### **Parameters:**
+Parameter|type|required|default|description
+------------ | ------------ | ------------ | ------------ | -------
+`symbol`|string|`YES`||Name of the contract.
+
+### **Response:**
+Name|type|example|description
+------------ | ------------ | ------------ | ------------
+`accountId`|long|`456552319339779840`|Account ID.
+`isCross`|boolean|`true`|Whether the position is in cross margin mode.
+`leverage`|integer|`10`|Current leverage value.
+`leverageLong`|integer|`10`|Leverage for long position.
+`leverageShort`|integer|`10`|Leverage for short position.
+`symbol_id`|string|`BTC-PERP-REV`|Name of the contract.
+
+### **Example:**
+
+```js
+{
+  'accountId': 456552319339779840,
+  'isCross': true,
+  'leverage': 10,
+  'leverageLong': 10,
+  'leverageShort': 10,
+  'symbol_id': 'BTC-PERP-REV'
+}
+```
+
 ## Key parameter explanation:
 
 ### `side`
